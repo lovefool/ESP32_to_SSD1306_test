@@ -17,15 +17,15 @@ Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 double    lat=35.123456789;
 double    lng=194.0123456789;
 
-int16_t   year=2024;
-int8_t    month=2;
-int8_t    day=6;
-int8_t    hour=9;
-int8_t    minute=34;
-int8_t    second=59;
+uint16_t   year=2024;
+uint8_t    month=2;
+uint8_t    day=6;
+uint8_t    hour=9;
+uint8_t    minute=34;
+uint8_t    second=59;
 
 uint8_t    rssi=255;
-int16_t   count=123;
+uint16_t   count=123;
 
 void setup()
 {
@@ -41,21 +41,21 @@ void loop()
   oled.setTextSize(2);             
   oled.setTextColor(WHITE);
 
-oled.setCursor(0,0);      
-sprintf(sz, "%10.6f", lat);  
-oled.print(sz);
+  oled.setCursor(0,0);      
+  sprintf(sz, "%10.6f", lat);  
+  oled.print(sz);
 
   oled.setCursor(0,18);
-sprintf(sz, "%10.6f", lng);  
-oled.print(sz);
+  sprintf(sz, "%10.6f", lng);  
+  oled.print(sz);
 
   oled.setTextSize(1);             
   oled.setCursor(0,40);
-  sprintf(sz, "%02d/%02d/%02d %02d:%02d:%02d", year, month, day, hour, minute, second);
+  sprintf(sz, "%04d/%02d/%02d %02d:%02d:%02d", year, month, day, hour, minute, second);
   oled.print(sz);
 
   oled.setCursor(0,54);
-  sprintf(sz, "RSSI:%3d COUNT:%3d", rssi, count);
+  sprintf(sz, "RSSI:%3d COUNT:%6d", rssi, count);
   oled.print(sz);
 
 //  oled.print(F("ABCDEFGHIJABCDEFGHIJ"));
